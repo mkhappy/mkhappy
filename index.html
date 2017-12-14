@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>打地鼠</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0"/>
+    <title>吃饭睡觉打豆豆</title>
     <style type="text/css">
         *{
             padding: 0;
@@ -16,6 +16,17 @@
             background-color: #8fd5e0;
             background-image: url(st.png);
             overflow: hidden;
+        }
+        div,table{
+            position: absolute;
+            left: 50%;
+            width: 72%;
+            height: auto;
+            max-width: 1000px;
+            max-height: 1000px;
+            transform: translate(-50%,0%);
+            -webkit-transform: translate(-50%,0%);/*居中*/
+            margin-top: 50px;
         }
         #content {
             width:960px;
@@ -45,7 +56,7 @@
             score = 0, //分数
             beat = 0, //鼠标点击次数
             success = 0, //命中率
-            knock = 0, //鼠标点中老鼠图片的次数
+            knock = 0, //鼠标点中豆子图片的次数
             countDown = 30, //倒计时
             interId = null, //指定 setInterval()的变量
             timeId = null; //指定 setTimeout()的变量
@@ -80,23 +91,23 @@
             clearTimeout(timeId);
         }
 
-        //随机循环显示老鼠图片
+        //随机循环显示豆子图片
         function show(){
             if(playing){
                 var current = Math.floor(Math.random()*25);
                 document.getElementById("td["+current+"]").innerHTML = '<img src="dz.png">';
-                setTimeout("document.getElementById('td["+current+"]').innerHtml=''",3000); //使用 setTimeout()实现3秒后隐藏老鼠图片
+                setTimeout("document.getElementById('td["+current+"]').innerHtml=''",3000); //使用 setTimeout()实现3秒后隐藏豆子图片
             }
         }
 
-        //清除所有老鼠图片
+        //清除所有豆子图片
         function clearMouse(){
             for(var i=0;i<25;i++){
                 document.getElementById("td["+i+"]").innerHTML="";
             }
         }
 
-        //点击事件函数，判断是否点中老鼠
+        //点击事件函数，判断是否点中豆子
         function hit(id){
             if(playing == false){
                 alert("请点击开始游戏!");
@@ -185,3 +196,4 @@
 </div>
 </body>
 </html>
+
